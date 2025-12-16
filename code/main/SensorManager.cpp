@@ -23,7 +23,7 @@ SensorData SensorManager::readSensors()
     SensorData data;
     data.proximity = vcnl.readProximity();
     data.ambientLight = vcnl.readAmbient();
-    
+
     // Read battery voltage from analog pin
     // Battery voltage goes through a voltage divider (/2), so multiply back
     float measuredvbat = analogRead(BATTERY_PIN);
@@ -31,7 +31,7 @@ SensorData SensorManager::readSensors()
     measuredvbat *= 3.3;  // Multiply by 3.3V, our reference voltage
     measuredvbat /= 1024; // convert to voltage
     data.batteryVoltage = measuredvbat;
-    
+
     return data;
 }
 
