@@ -1,9 +1,6 @@
 #include "RTCManager.h"
 #include <Wire.h>
 
-// Initialize static member
-volatile bool RTCManager::interruptFired = false;
-
 RTCManager::RTCManager()
 {
 }
@@ -42,14 +39,6 @@ void RTCManager::setupTimer()
     // Always deconfigure all timers before setting up a new one
     rtc.deconfigureAllTimers();
 
-    // Set the pin attached to PCF8523 INT to be an input with pullup to HIGH.
-    // The PCF8523 interrupt pin will briefly pull it LOW at the end of a given
-    // countdown period, then it will be released to be pulled HIGH again.
-    pinMode(RTC_INTERRUPT_PIN, INPUT_PULLUP);
-
-    // Attach interrupt handler to detect FALLING edge (when INT pin is pulled LOW)
-    attachInterrupt(digitalPinToInterrupt(RTC_INTERRUPT_PIN), interruptHandler, FALLING);
-
     // Enable countdown timer - it will automatically restart after each countdown!
     // The PCF8523 will pull the INT pin LOW briefly when countdown reaches 0,
     // then immediately start counting down again.
@@ -64,20 +53,4 @@ void RTCManager::setupTimer()
 DateTime RTCManager::now()
 {
     return rtc.now();
-}
-
-bool RTCManager::isInterruptFired()
-{
-    return interruptFired;
-}
-
-void RTCManager::resetInterruptFlag()
-{
-    interruptFired = false;
-}
-
-void RTCManager::interruptHandler()
-{
-    interruptFired = true;
-    // Note: Keep ISR as short as possible, no Serial.print() here
 }
