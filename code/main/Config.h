@@ -9,6 +9,10 @@ const int RTC_INTERRUPT_PIN = 5; // RTC interrupt pin (SQW/INT on Adalogger)
 // Timing configuration
 const int SLEEP_INTERVAL = 10; // seconds between logs
 
+// Measurement configuration
+const int MEASUREMENT_COUNT = 10;        // Number of measurements to average
+const int MEASUREMENT_INTERVAL_MS = 100; // Milliseconds between measurements
+
 // Debug configuration
 const bool DEBUG_MODE = true;
 

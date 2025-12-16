@@ -20,6 +20,9 @@ public:
     // Read sensor data
     SensorData readSensors();
 
+    // Read multiple sensor measurements and return averaged values
+    SensorData readAveragedSensors(int count, int intervalMs);
+
 private:
     Adafruit_VCNL4010 vcnl;
 };

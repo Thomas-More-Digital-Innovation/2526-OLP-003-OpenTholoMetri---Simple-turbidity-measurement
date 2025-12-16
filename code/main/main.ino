@@ -29,8 +29,7 @@ void setup()
   // Initialize RTC
   if (!rtcManager.begin())
   {
-    while (true)
-      ;
+    while (true);
   }
 
   // Setup RTC timer and interrupt
@@ -106,8 +105,8 @@ void loop()
   rtcInterruptFired = false;
 
   Serial.println("Reading sensor data...");
-  // Read sensor data
-  SensorData sensorData = sensorManager.readSensors();
+  // Read multiple measurements and average them
+  SensorData sensorData = sensorManager.readAveragedSensors(MEASUREMENT_COUNT, MEASUREMENT_INTERVAL_MS);
 
   // Get current timestamp
   DateTime timestamp = rtcManager.now();
