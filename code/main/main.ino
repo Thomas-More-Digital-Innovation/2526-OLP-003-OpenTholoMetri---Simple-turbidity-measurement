@@ -52,10 +52,10 @@ void loop()
   // Check if RTC interrupt fired
   if (!RTCManager::isInterruptFired())
   {
-    // No interrupt yet, just wait in low power mode
-    // On SAMD21 (Feather M0), external interrupts work differently with sleep
-    // For now, use a short delay to reduce power while waiting
-    delay(100);
+    // Enter deep sleep (standby mode) - will wake on RTC interrupt on pin 5
+    // SAMD21 standby mode uses ~6µA and can wake from external interrupts
+    __DSB(); // Data Synchronization Barrier
+    __WFI(); // Wait For Interrupt - enters standby mode
     return;
   }
 
