@@ -5,6 +5,7 @@
 const int SD_CS_PIN = 10;        // SD card CS pin on Adalogger
 const int LED_PIN = 13;          // LED pin
 const int RTC_INTERRUPT_PIN = 5; // RTC interrupt pin (SQW/INT on Adalogger)
+const int BATTERY_PIN = 9;       // Battery voltage pin
 
 // Timing configuration
 const int SLEEP_INTERVAL = 10; // seconds between logs

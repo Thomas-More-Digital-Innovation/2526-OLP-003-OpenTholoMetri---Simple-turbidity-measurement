@@ -7,6 +7,7 @@ struct SensorData
 {
     uint16_t proximity;
     uint16_t ambientLight;
+    float batteryVoltage;
 };
 
 class SensorManager

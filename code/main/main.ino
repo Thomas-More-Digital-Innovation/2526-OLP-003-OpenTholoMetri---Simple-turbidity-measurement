@@ -19,7 +19,7 @@ void rtcInterruptHandler()
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
   delay(2000); // Wait for serial monitor
 
   // Initialize LED pin

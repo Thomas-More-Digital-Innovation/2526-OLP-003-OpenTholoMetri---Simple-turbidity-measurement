@@ -19,7 +19,7 @@ bool SDLogger::begin()
         File dataFile = SD.open(fileName, FILE_WRITE);
         if (dataFile)
         {
-            dataFile.println("Timestamp,Proximity,Ambient Light");
+            dataFile.println("Timestamp,Proximity,Ambient Light,Battery Voltage");
             dataFile.close();
             Serial.println("Created new log file with headers");
         }
@@ -50,7 +50,9 @@ bool SDLogger::logData(const DateTime &timestamp, const SensorData &data)
     dataFile.print(",");
     dataFile.print(data.proximity);
     dataFile.print(",");
-    dataFile.println(data.ambientLight);
+    dataFile.print(data.ambientLight);
+    dataFile.print(",");
+    dataFile.println(data.batteryVoltage, 2);
     dataFile.close();
 
     Serial.print("Logged: ");
@@ -58,7 +60,10 @@ bool SDLogger::logData(const DateTime &timestamp, const SensorData &data)
     Serial.print(" | Prox: ");
     Serial.print(data.proximity);
     Serial.print(" | Light: ");
-    Serial.println(data.ambientLight);
+    Serial.print(data.ambientLight);
+    Serial.print(" | Battery: ");
+    Serial.print(data.batteryVoltage, 2);
+    Serial.println("V");
 
     return true;
 }
