@@ -1,4 +1,3 @@
-#include <Adafruit_SleepyDog.h>
 #include "Config.h"
 #include "RTCManager.h"
 #include "SensorManager.h"
