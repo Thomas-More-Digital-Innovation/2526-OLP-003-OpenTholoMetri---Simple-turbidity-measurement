@@ -1,0 +1,13 @@
+{
+  "name": "opentholometri-csv-viewer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild code/pages/site/src/app.ts --bundle --format=esm --target=es2020 --minify --outfile=code/pages/assets/app.js",
+    "dev": "esbuild code/pages/site/src/app.ts --bundle --format=esm --target=es2020 --servedir=code/pages --outfile=code/pages/assets/app.js --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.2",
+    "typescript": "^5.3.3"
+  }
+}

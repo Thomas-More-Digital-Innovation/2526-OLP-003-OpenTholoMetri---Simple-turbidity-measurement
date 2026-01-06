@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenTholoMetri CSV Viewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900">
+    <div class="mx-auto max-w-6xl px-4 py-8">
+      <header class="mb-8">
+        <h1 class="text-2xl font-semibold">OpenTholoMetri CSV Viewer</h1>
+        <p class="mt-2 text-sm text-slate-600">
+          Load a CSV from the SD card (headers expected: <span class="font-mono">Timestamp,Proximity,Ambient Light,Battery Voltage</span>). Everything runs locally in your browser.
+        </p>
+      </header>
+
+      <section class="grid gap-4 md:grid-cols-2">
+        <div class="rounded-lg border border-slate-200 bg-white p-4">
+          <h2 class="text-sm font-medium text-slate-700">1) Load CSV</h2>
+
+          <div class="mt-3 flex flex-col gap-3">
+            <input id="fileInput" type="file" accept=".csv,text/csv" class="block w-full text-sm" />
+
+            <div
+              id="dropZone"
+              class="flex min-h-[96px] items-center justify-center rounded-md border-2 border-dashed border-slate-300 bg-slate-50 px-3 text-center text-sm text-slate-600"
+            >
+              Drop a CSV file here
+            </div>
+
+            <div id="status" class="text-sm text-slate-600"></div>
+            <div id="error" class="hidden rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-800"></div>
+          </div>
+        </div>
+
+        <div class="rounded-lg border border-slate-200 bg-white p-4">
+          <h2 class="text-sm font-medium text-slate-700">2) Summary</h2>
+          <dl class="mt-3 grid grid-cols-2 gap-3 text-sm">
+            <div>
+              <dt class="text-slate-500">Rows</dt>
+              <dd id="summaryRows" class="font-medium">—</dd>
+            </div>
+            <div>
+              <dt class="text-slate-500">Columns</dt>
+              <dd id="summaryCols" class="font-medium">—</dd>
+            </div>
+            <div>
+              <dt class="text-slate-500">Start</dt>
+              <dd id="summaryStart" class="font-medium">—</dd>
+            </div>
+            <div>
+              <dt class="text-slate-500">End</dt>
+              <dd id="summaryEnd" class="font-medium">—</dd>
+            </div>
+          </dl>
+
+          <div class="mt-4 grid gap-3 md:grid-cols-2">
+            <label class="block text-sm">
+              <span class="text-slate-600">X axis</span>
+              <select id="xSelect" class="mt-1 w-full rounded-md border border-slate-300 bg-white p-2"></select>
+            </label>
+            <label class="block text-sm">
+              <span class="text-slate-600">Y axis</span>
+              <select id="ySelect" class="mt-1 w-full rounded-md border border-slate-300 bg-white p-2"></select>
+            </label>
+          </div>
+
+          <p class="mt-3 text-xs text-slate-500">
+            Tip: If your timestamp has the format <span class="font-mono">YYYY-MM-DD HH:MM:SS</span>, it will be interpreted as local time.
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-6 rounded-lg border border-slate-200 bg-white p-4">
+        <h2 class="text-sm font-medium text-slate-700">3) Plot</h2>
+        <div id="plot" class="mt-3 h-[420px]"></div>
+      </section>
+
+      <section class="mt-6 rounded-lg border border-slate-200 bg-white p-4">
+        <div class="flex items-center justify-between gap-3">
+          <h2 class="text-sm font-medium text-slate-700">4) Preview (first 50 rows)</h2>
+          <button id="downloadJson" class="hidden rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm hover:bg-slate-50">
+            Download JSON
+          </button>
+        </div>
+        <div class="mt-3 overflow-auto">
+          <table class="min-w-full border-collapse text-left text-sm">
+            <thead id="tableHead" class="sticky top-0 bg-white"></thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="mt-8 text-xs text-slate-500">
+        Runs entirely in your browser. No data is uploaded.
+      </footer>
+    </div>
+
+    <script type="module" src="./assets/app.js"></script>
+  </body>
+</html>

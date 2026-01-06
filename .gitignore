@@ -1,0 +1,9 @@
+# Node
+node_modules/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Build artifacts (we commit docs/assets/app.js for GitHub Pages)
