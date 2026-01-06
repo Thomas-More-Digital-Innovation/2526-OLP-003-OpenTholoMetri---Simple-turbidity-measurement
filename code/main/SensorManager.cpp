@@ -1,6 +1,68 @@
 #include "SensorManager.h"
 #include "Config.h"
 
+#include <Wire.h>
+
+namespace
+{
+    bool vcnl4010Write8(uint8_t reg, uint8_t value)
+    {
+        Wire.beginTransmission(VCNL4010_I2CADDR_DEFAULT);
+        Wire.write(reg);
+        Wire.write(value);
+        return Wire.endTransmission() == 0;
+    }
+
+    bool vcnl4010Read8(uint8_t reg, uint8_t &value)
+    {
+        Wire.beginTransmission(VCNL4010_I2CADDR_DEFAULT);
+        Wire.write(reg);
+        if (Wire.endTransmission(false) != 0)
+        {
+            return false;
+        }
+
+        uint8_t readCount = Wire.requestFrom((int)VCNL4010_I2CADDR_DEFAULT, 1);
+        if (readCount != 1 || !Wire.available())
+        {
+            return false;
+        }
+
+        value = Wire.read();
+        return true;
+    }
+
+    bool vcnl4010SetAmbientAveraging(uint8_t log2Avg)
+    {
+        if (log2Avg > 7)
+        {
+            log2Avg = 7;
+        }
+
+        uint8_t reg = 0;
+        if (!vcnl4010Read8(VCNL4010_AMBIENTPARAMETER, reg))
+        {
+            return false;
+        }
+
+        reg &= 0b11111000;
+        reg |= (log2Avg & 0b00000111);
+        return vcnl4010Write8(VCNL4010_AMBIENTPARAMETER, reg);
+    }
+
+    bool vcnl4010SetAmbientContinuous(bool enable)
+    {
+        uint8_t reg = 0;
+        if (!vcnl4010Read8(VCNL4010_AMBIENTPARAMETER, reg))
+        {
+            return false;
+        }
+
+        reg = (reg & 0b01111111) | ((enable ? 1 : 0) << 7);
+        return vcnl4010Write8(VCNL4010_AMBIENTPARAMETER, reg);
+    }
+}
+
 SensorManager::SensorManager()
 {
 }
@@ -12,6 +74,22 @@ bool SensorManager::begin()
     {
         Serial.println("VCNL4010 sensor initialization failed!");
         return false;
+    }
+
+    // Apply OpenOBS-like defaults (Adafruit begin() sets its own defaults; override them here)
+    vcnl.setLEDcurrent(VCNL4010_LED_CURRENT_10MA);
+    vcnl.setFrequency((vcnl4010_freq)VCNL4010_PROX_RATE_VALUE);
+
+    bool ambientOk = vcnl4010SetAmbientAveraging(VCNL4010_AMBIENT_AVERAGING_LOG2) &&
+                     vcnl4010SetAmbientContinuous(VCNL4010_AMBIENT_CONTINUOUS);
+
+    if (DEBUG_MODE)
+    {
+        Serial.println("VCNL4010 settings applied: LEDcurrent=" + String(VCNL4010_LED_CURRENT_10MA) + " (x10mA), ProxRate=" + String(VCNL4010_PROX_RATE_VALUE) + ", AmbientAvgLog2=" + String(VCNL4010_AMBIENT_AVERAGING_LOG2) + ", AmbientContinuous=" + String(VCNL4010_AMBIENT_CONTINUOUS ? "true" : "false"));
+        if (!ambientOk)
+        {
+            Serial.println("Warning: failed to apply VCNL4010 ambient settings via I2C register write.");
+        }
     }
 
     Serial.println("VCNL4010 sensor initialized successfully!");
