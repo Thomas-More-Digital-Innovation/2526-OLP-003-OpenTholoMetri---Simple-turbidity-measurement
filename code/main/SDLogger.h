@@ -19,6 +19,9 @@ public:
 
 private:
     const char *fileName;
+    bool sdInitialized = false;
+
+    bool initializeCardAndEnsureFile();
 
     // Format timestamp as string
     void formatTimestamp(const DateTime &timestamp, char *buffer);

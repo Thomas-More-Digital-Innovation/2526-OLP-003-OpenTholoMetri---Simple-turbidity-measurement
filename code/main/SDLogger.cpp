@@ -6,7 +6,13 @@ SDLogger::SDLogger() : fileName(LOG_FILE_NAME)
 
 bool SDLogger::begin()
 {
-    // Initialize SD card
+    sdInitialized = initializeCardAndEnsureFile();
+    return sdInitialized;
+}
+
+bool SDLogger::initializeCardAndEnsureFile()
+{
+    // Re-(initialize) SD card. After removal/reinsert, the SD stack often needs SD.begin() again.
     if (!SD.begin(SD_CS_PIN))
     {
         Serial.println("SD card initialization failed!");
@@ -17,17 +23,15 @@ bool SDLogger::begin()
     if (!SD.exists(fileName))
     {
         File dataFile = SD.open(fileName, FILE_WRITE);
-        if (dataFile)
-        {
-            dataFile.println("Timestamp,Proximity,Ambient Light,Battery Voltage");
-            dataFile.close();
-            Serial.println("Created new log file with headers");
-        }
-        else
+        if (!dataFile)
         {
             Serial.println("Failed to create log file!");
             return false;
         }
+
+        dataFile.println("Timestamp,Proximity,Ambient Light,Battery Voltage");
+        dataFile.close();
+        Serial.println("Created new log file with headers");
     }
 
     Serial.println("SD card initialized successfully!");
@@ -36,11 +40,32 @@ bool SDLogger::begin()
 
 bool SDLogger::logData(const DateTime &timestamp, const SensorData &data)
 {
+    if (!sdInitialized)
+    {
+        sdInitialized = initializeCardAndEnsureFile();
+        if (!sdInitialized)
+        {
+            Serial.println("Error opening log file!");
+            return false;
+        }
+    }
+
     File dataFile = SD.open(fileName, FILE_WRITE);
     if (!dataFile)
     {
-        Serial.println("Error opening log file!");
-        return false;
+        // If the SD was removed and reinserted, SD.open() can keep failing until we re-run SD.begin().
+        sdInitialized = false;
+        sdInitialized = initializeCardAndEnsureFile();
+        if (sdInitialized)
+        {
+            dataFile = SD.open(fileName, FILE_WRITE);
+        }
+
+        if (!dataFile)
+        {
+            Serial.println("Error opening log file!");
+            return false;
+        }
     }
 
     char timestampStr[20];
