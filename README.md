@@ -12,5 +12,5 @@ This repository includes a small, static website that loads and plots the CSV ge
 
 ### How to use
 
-- Open [otm.davidmaat.be](otm.davidmaat.be) in a browser.
+- Open [otm.davidmaat.be](https://otm.davidmaat.be) in a browser.
 - Drag & drop a CSV, or use the file picker.
