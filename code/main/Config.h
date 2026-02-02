@@ -6,6 +6,10 @@ const int SD_CS_PIN = 10;        // SD card CS pin on Adalogger
 const int LED_PIN = 13;          // LED pin
 const int RTC_INTERRUPT_PIN = 5; // RTC interrupt pin (SQW/INT on Adalogger)
 const int BATTERY_PIN = 9;       // Battery voltage pin
+const int DS18B20_POWER_PIN = 12;   // DS18B20 VCC power control
+const int DS18B20_DATA_PIN = A0;    // DS18B20 1-Wire data pin
+const int GROVE_POWER_PIN = 11;     // Grove turbidity sensor VCC power control
+const int GROVE_ANALOG_PIN = A1;    // Grove turbidity sensor analog pin
 
 // Timing configuration
 const int SLEEP_INTERVAL = 10; // seconds between logs
@@ -13,6 +17,12 @@ const int SLEEP_INTERVAL = 10; // seconds between logs
 // Measurement configuration
 const int MEASUREMENT_COUNT = 10;        // Number of measurements to average
 const int MEASUREMENT_INTERVAL_MS = 100; // Milliseconds between measurements
+
+// DS18B20 configuration
+const unsigned long DS18B20_POWER_STABILIZATION_MS = 1000; // ms to wait after powering sensor
+
+// Grove turbidity sensor configuration
+const unsigned long GROVE_POWER_STABILIZATION_MS = 20; // ms to wait after powering sensor
 
 // VCNL4010 configuration (match OpenOBS defaults)
 // LED current is in 10mA units: 5 => 50mA

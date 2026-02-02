@@ -64,11 +64,33 @@ namespace
 }
 
 SensorManager::SensorManager()
+    : oneWire(DS18B20_DATA_PIN), ds18b20(&oneWire)
 {
 }
 
 bool SensorManager::begin()
 {
+    // Configure ADC for SAMD21 (M0) to 12-bit resolution (0-4095)
+    analogReadResolution(12);
+
+    // Initialize DS18B20 power pin
+    pinMode(DS18B20_POWER_PIN, OUTPUT);
+    digitalWrite(DS18B20_POWER_PIN, LOW);
+    pinMode(DS18B20_DATA_PIN, INPUT_PULLUP);
+
+    // Initialize Grove turbidity sensor power pin
+    pinMode(GROVE_POWER_PIN, OUTPUT);
+    digitalWrite(GROVE_POWER_PIN, LOW);
+
+    // Temporarily power DS18B20 to initialize the Dallas library
+    digitalWrite(DS18B20_POWER_PIN, HIGH);
+    delay(DS18B20_POWER_STABILIZATION_MS);
+    ds18b20.begin();
+    digitalWrite(DS18B20_POWER_PIN, LOW);
+
+    Serial.println("DS18B20 sensor initialized successfully!");
+    Serial.println("Grove turbidity sensor initialized successfully!");
+
     // Initialize VCNL4010 sensor
     if (!vcnl.begin())
     {
@@ -110,6 +132,20 @@ SensorData SensorManager::readSensors()
     measuredvbat /= 1024; // convert to voltage
     data.batteryVoltage = measuredvbat;
 
+    // Read DS18B20 temperature sensor
+    digitalWrite(DS18B20_POWER_PIN, HIGH);
+    delay(DS18B20_POWER_STABILIZATION_MS);
+    ds18b20.requestTemperatures();
+    data.temperatureC = ds18b20.getTempCByIndex(0);
+    digitalWrite(DS18B20_POWER_PIN, LOW);
+
+    // Read Grove turbidity sensor
+    digitalWrite(GROVE_POWER_PIN, HIGH);
+    delay(GROVE_POWER_STABILIZATION_MS);
+    data.turbidityRaw = analogRead(GROVE_ANALOG_PIN);
+    data.turbidityVoltage = data.turbidityRaw * (3.3 / 4095.0);
+    digitalWrite(GROVE_POWER_PIN, LOW);
+
     return data;
 }
 
@@ -118,6 +154,9 @@ SensorData SensorManager::readAveragedSensors(int count, int intervalMs)
     uint32_t proximitySum = 0;
     uint32_t ambientLightSum = 0;
     float batteryVoltageSum = 0;
+    float temperatureSum = 0;
+    uint32_t turbidityRawSum = 0;
+    float turbidityVoltageSum = 0;
 
     // Take multiple measurements
     for (int i = 0; i < count; i++)
@@ -126,8 +165,11 @@ SensorData SensorManager::readAveragedSensors(int count, int intervalMs)
         proximitySum += sample.proximity;
         ambientLightSum += sample.ambientLight;
         batteryVoltageSum += sample.batteryVoltage;
+        temperatureSum += sample.temperatureC;
+        turbidityRawSum += sample.turbidityRaw;
+        turbidityVoltageSum += sample.turbidityVoltage;
 
-        Serial.println("Measurement " + String(i) + ": Proximity=" + String(sample.proximity) + ", AmbientLight=" + String(sample.ambientLight) + ", BatteryV=" + String(sample.batteryVoltage, 2));
+        Serial.println("Measurement " + String(i) + ": Proximity=" + String(sample.proximity) + ", AmbientLight=" + String(sample.ambientLight) + ", BatteryV=" + String(sample.batteryVoltage, 2) + ", TempC=" + String(sample.temperatureC, 2) + ", TurbidityRaw=" + String(sample.turbidityRaw) + ", TurbidityV=" + String(sample.turbidityVoltage, 4));
 
         // Delay between measurements (skip delay after last measurement)
         if (i < count - 1)
@@ -141,6 +183,9 @@ SensorData SensorManager::readAveragedSensors(int count, int intervalMs)
     averaged.proximity = proximitySum / count;
     averaged.ambientLight = ambientLightSum / count;
     averaged.batteryVoltage = batteryVoltageSum / count;
+    averaged.temperatureC = temperatureSum / count;
+    averaged.turbidityRaw = turbidityRawSum / count;
+    averaged.turbidityVoltage = turbidityVoltageSum / count;
 
     return averaged;
 }

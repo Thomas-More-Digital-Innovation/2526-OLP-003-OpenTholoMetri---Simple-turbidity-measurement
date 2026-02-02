@@ -29,7 +29,7 @@ bool SDLogger::initializeCardAndEnsureFile()
             return false;
         }
 
-        dataFile.println("Timestamp,Proximity,Ambient Light,Battery Voltage");
+        dataFile.println("Timestamp,Proximity,Ambient Light,Battery Voltage,Temperature (C),Turbidity Raw,Turbidity Voltage");
         dataFile.close();
         Serial.println("Created new log file with headers");
     }
@@ -77,7 +77,13 @@ bool SDLogger::logData(const DateTime &timestamp, const SensorData &data)
     dataFile.print(",");
     dataFile.print(data.ambientLight);
     dataFile.print(",");
-    dataFile.println(data.batteryVoltage, 2);
+    dataFile.print(data.batteryVoltage, 2);
+    dataFile.print(",");
+    dataFile.print(data.temperatureC, 2);
+    dataFile.print(",");
+    dataFile.print(data.turbidityRaw);
+    dataFile.print(",");
+    dataFile.println(data.turbidityVoltage, 4);
     dataFile.close();
 
     Serial.print("Logged: ");
@@ -88,7 +94,13 @@ bool SDLogger::logData(const DateTime &timestamp, const SensorData &data)
     Serial.print(data.ambientLight);
     Serial.print(" | Battery: ");
     Serial.print(data.batteryVoltage, 2);
-    Serial.println("V");
+    Serial.print("V | Temp: ");
+    Serial.print(data.temperatureC, 2);
+    Serial.print("C | Turbidity: ");
+    Serial.print(data.turbidityRaw);
+    Serial.print(" (");
+    Serial.print(data.turbidityVoltage, 4);
+    Serial.println("V)");
 
     return true;
 }
