@@ -19,7 +19,7 @@ const int MEASUREMENT_COUNT = 10;        // Number of measurements to average
 const int MEASUREMENT_INTERVAL_MS = 100; // Milliseconds between measurements
 
 // DS18B20 configuration
-const unsigned long DS18B20_POWER_STABILIZATION_MS = 1000; // ms to wait after powering sensor
+const unsigned long DS18B20_POWER_STABILIZATION_MS = 10; // ms to wait after powering sensor
 
 // Grove turbidity sensor configuration
 const unsigned long GROVE_POWER_STABILIZATION_MS = 20; // ms to wait after powering sensor
