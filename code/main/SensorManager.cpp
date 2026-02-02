@@ -129,7 +129,7 @@ SensorData SensorManager::readSensors()
     float measuredvbat = analogRead(BATTERY_PIN);
     measuredvbat *= 2;    // we divided by 2, so multiply back
     measuredvbat *= 3.3;  // Multiply by 3.3V, our reference voltage
-    measuredvbat /= 1024; // convert to voltage
+    measuredvbat /= 4095; // convert to voltage (12-bit ADC resolution)
     data.batteryVoltage = measuredvbat;
 
     // Read DS18B20 temperature sensor
