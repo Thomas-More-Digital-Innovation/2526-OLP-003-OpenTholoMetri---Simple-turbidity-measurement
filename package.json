@@ -7,7 +7,7 @@
     "dev": "esbuild code/pages/site/src/app.ts --bundle --format=esm --target=es2020 --servedir=code/pages --outfile=code/pages/assets/app.js --watch"
   },
   "devDependencies": {
-    "esbuild": "^0.20.2",
+    "esbuild": "^0.25.0",
     "typescript": "^5.3.3"
   }
 }
