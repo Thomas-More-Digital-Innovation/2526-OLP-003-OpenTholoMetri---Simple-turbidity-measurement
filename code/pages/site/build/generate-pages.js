@@ -12,7 +12,9 @@ const outputDir = join(__dirname, '../../');
 // Navigation items - manually configured
 const navItems = [
   { title: 'About', href: '/', page: 'about' },
-  { title: 'Documentation', href: '/documentation.html', page: 'documentation' },
+  { title: 'Materials', href: '/materials-list.html', page: 'materials-list' },
+  { title: 'Build', href: '/build.html', page: 'build' },
+  { title: 'Code Documentation', href: '/documentation.html', page: 'documentation' },
   { title: 'CSV Viewer', href: '/csv-viewer/', page: null },
 ];
 
