@@ -45,17 +45,76 @@ function createTemplate(title, bodyHtml, currentPage) {
     <title>${title} - OpenTholoMetri</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      .prose h1 { @apply text-3xl font-bold mb-4 mt-8 text-slate-900; }
-      .prose h2 { @apply text-2xl font-semibold mb-3 mt-6 text-slate-900; }
-      .prose h3 { @apply text-xl font-medium mb-2 mt-4 text-slate-900; }
-      .prose p { @apply mb-4 text-slate-700 leading-relaxed; }
-      .prose ul { @apply mb-4 ml-6 list-disc text-slate-700; }
-      .prose li { @apply mb-2; }
-      .prose strong { @apply font-semibold text-slate-900; }
-      .prose a { @apply text-blue-600 hover:underline; }
-      .prose code { @apply bg-slate-100 px-1.5 py-0.5 rounded text-sm font-mono text-slate-800; }
-      .prose pre { @apply bg-slate-100 p-4 rounded-lg overflow-x-auto mb-4; }
-      .prose pre code { @apply bg-transparent p-0; }
+      .prose h1 {
+        font-size: 1.875rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+        color: #0f172a;
+      }
+      .prose h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        margin-top: 1.5rem;
+        color: #0f172a;
+      }
+      .prose h3 {
+        font-size: 1.25rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        margin-top: 1rem;
+        color: #0f172a;
+      }
+      .prose p {
+        margin-bottom: 1rem;
+        color: #334155;
+        line-height: 1.625;
+      }
+      .prose ul, .prose ol {
+        margin-bottom: 1rem;
+        margin-left: 1.5rem;
+        color: #334155;
+      }
+      .prose ul {
+        list-style-type: disc;
+      }
+      .prose ol {
+        list-style-type: decimal;
+      }
+      .prose li {
+        margin-bottom: 0.5rem;
+      }
+      .prose strong {
+        font-weight: 600;
+        color: #0f172a;
+      }
+      .prose a {
+        color: #2563eb;
+        text-decoration: none;
+      }
+      .prose a:hover {
+        text-decoration: underline;
+      }
+      .prose code {
+        background-color: #f1f5f9;
+        padding: 0.125rem 0.375rem;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        font-family: ui-monospace, monospace;
+        color: #1e293b;
+      }
+      .prose pre {
+        background-color: #f1f5f9;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        margin-bottom: 1rem;
+      }
+      .prose pre code {
+        background-color: transparent;
+        padding: 0;
+      }
     </style>
   </head>
   <body class="min-h-screen bg-slate-50">
