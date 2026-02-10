@@ -12,17 +12,17 @@ const int GROVE_POWER_PIN = 11;     // Grove turbidity sensor VCC power control
 const int GROVE_ANALOG_PIN = A1;    // Grove turbidity sensor analog pin
 
 // Timing configuration
-const int SLEEP_INTERVAL = 10; // seconds between logs
+const int SLEEP_INTERVAL = 60; // seconds between logs
 
 // Measurement configuration
-const int MEASUREMENT_COUNT = 10;        // Number of measurements to average
-const int MEASUREMENT_INTERVAL_MS = 100; // Milliseconds between measurements
+const int MEASUREMENT_COUNT = 5;        // Number of measurements to average
+const int MEASUREMENT_INTERVAL_MS = 10; // Milliseconds between measurements
 
 // DS18B20 configuration
 const unsigned long DS18B20_POWER_STABILIZATION_MS = 10; // ms to wait after powering sensor
 
 // Grove turbidity sensor configuration
-const unsigned long GROVE_POWER_STABILIZATION_MS = 20; // ms to wait after powering sensor
+const unsigned long GROVE_POWER_STABILIZATION_MS = 10; // ms to wait after powering sensor
 
 // VCNL4010 configuration (match OpenOBS defaults)
 // LED current is in 10mA units: 5 => 50mA
