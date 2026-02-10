@@ -3,11 +3,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "esbuild code/pages/site/src/app.ts --bundle --format=esm --target=es2020 --minify --outfile=code/pages/assets/app.js",
-    "dev": "esbuild code/pages/site/src/app.ts --bundle --format=esm --target=es2020 --servedir=code/pages --outfile=code/pages/assets/app.js --watch"
+    "build:viewer": "esbuild code/pages/site/src/app.ts --bundle --format=esm --target=es2020 --minify --outfile=code/pages/csv-viewer/assets/app.js",
+    "build:pages": "node code/pages/site/build/generate-pages.js",
+    "build": "npm run build:viewer && npm run build:pages",
+    "dev": "esbuild code/pages/site/src/app.ts --bundle --format=esm --target=es2020 --servedir=code/pages --outfile=code/pages/csv-viewer/assets/app.js --watch"
   },
   "devDependencies": {
     "esbuild": "^0.20.2",
+    "marked": "^12.0.0",
     "typescript": "^5.3.3"
   }
 }
