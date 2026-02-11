@@ -4,4 +4,44 @@
 
 Building the OpenTholoMetri takes a couple of hours, spread across a few days. Follow these steps carefully to ensure proper operation.
 
-## TODO: Make build guide
+## 0: Order parts
+
+If you have not already, order the parts listed out in the [BOM](/materials-list.html). If you have everything ready including the tools, follow the guide below :)
+
+## 1: Soldering 
+
+If you don't have much expierence soldering, start with the easier parts, like the individual wires. A connection diagram can be found below:
+
+![OTM electrical layout](/assets/OpenTholoMetri-electrical-layout.png)
+
+Solder the individual connections to the adaloggers second set of pins, the first set is used for the headers to connect the adalogger to the feather M0.
+
+## 2: 3D printed housing
+
+3D print the housing from the step file provided [here](https://github.com/Thomas-More-Digital-Innovation/2526-OLP-003-OpenTholoMetri---Simple-turbidity-measurement/tree/main/documents/files/SensorHead3dFiles). You can use any 3d printer, be sure to turn on supports if needed for your printer.
+
+![Sensor head 3d print](/assets/sensorhead-3d-print.png)
+
+## 3: Fitting sensors in housing
+
+Fit the grove turbidity sensor first, then push in the VCNL4010, finally fit the DS18B20 probe.
+
+## 4: Pouring the epoxy in the housing
+
+This step takes by far the longest, I did it with two sets of exopy. The first one is a quick set epoxy that I used to mount everything, the second is a slow setting epoxy that is easy to use for this case, because it's very viscous, which causes it to not need a vacuüm pump to be clear.
+
+![First epoxy pour](/assets/epoxy/epoxy-1)
+
+When pouring the final epoxy, make sure the sensor is laying flat. It might need to be poured in two layers due to the epoxy leaking out.
+
+![Second epoxy pour part 1](/assets/epoxy/epoxy-2)
+![Second epoxy pour part 2](/assets/epoxy/epoxy-3)
+
+
+## 5: Fitting the head to the tube
+
+TODO
+
+## 6: Closing the tube
+
+Finally, fit the winter pool plug and tighten it to water proof the sensor. 
