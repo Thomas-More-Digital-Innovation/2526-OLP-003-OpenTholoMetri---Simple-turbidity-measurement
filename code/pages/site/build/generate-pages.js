@@ -29,7 +29,7 @@ function createHeader(currentPage) {
 
   return `
     <header class="border-b border-slate-200 bg-white">
-      <div class="mx-auto max-w-5xl px-4 py-4">
+      <div class="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
         <nav class="flex items-center gap-6">
           <div class="text-lg font-semibold text-slate-900">OpenTholoMetri</div>
           ${navLinks}
