@@ -34,7 +34,9 @@ function createHeader(currentPage) {
           <div class="text-lg font-semibold text-slate-900">OpenTholoMetri</div>
           ${navLinks}
         </nav>
-        <a href="https://github.com/Thomas-More-Digital-Innovation/2526-OLP-003-OpenTholoMetri---Simple-turbidity-measurement"><img src="assets/GitHub_Invertocat_Black.png" alt="GitHub Logo" class="h-5 w-5"></a>
+        <a href="https://github.com/Thomas-More-Digital-Innovation/2526-OLP-003-OpenTholoMetri---Simple-turbidity-measurement">
+          <img src="assets/GitHub_Invertocat_Black.png" alt="GitHub Logo" class="h-10">
+        </a>
       </div>
     </header>`;
 }
