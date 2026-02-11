@@ -36,12 +36,17 @@ When pouring the final epoxy, make sure the sensor is laying flat. It might need
 
 ![Second epoxy pour part 1](/assets/epoxy/epoxy-2.jpg)
 ![Second epoxy pour part 2](/assets/epoxy/epoxy-3.jpg)
+The picture above is from the first prototype, don't worry about the connections.
 
+## 5: Uploading the firmware to the board
 
-## 5: Fitting the head to the tube
+Plug in the board via usb to your computer, double click the button on the board (M0), the light will start pulsing and a new usb drive will be available to upload the .uf2 file found [here](https://github.com/Thomas-More-Digital-Innovation/2526-OLP-003-OpenTholoMetri---Simple-turbidity-measurement/tree/main/documents/files/prebuilt-firmware/). This is the firmware with default settings. 
+If you want to change these, you will have to recompile the firmware,see the [firmware guide](/firmware.html)
+
+## 6: Fitting the head to the tube
 
 TODO
 
-## 6: Closing the tube
+## 7: Closing the tube
 
 Finally, fit the winter pool plug and tighten it to water proof the sensor. 

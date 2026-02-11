@@ -1,8 +1,20 @@
 # OpenTholoMetri
 
+OpenTholoMetri is heavily inspired by the [OpenOBS-328](https://github.com/tedlanghorst/OpenOBS-328/tree/main) project by Ted Langhorst. Many thanks to [Olpas](https://www.olpas.tech/) for their support in making this project a reality and to Thomas More Digital Innovation for introducing me to this opportunity.
+
 ## System Overview
 
 The OpenTholoMetri is a data logging system designed for turbidity measurement using optical sensors. The system operates in a low-power mode, periodically waking up to take sensor readings, logging the data to an SD card with timestamps, and then returning to sleep.
+
+## Why does this project exist?
+
+While the OpenOBS-328 is great, I found the documentation quite difficult to read. The fact of having to order pcbs (with minimum order quantities) made it hard to justify as a one off sensor, which makes the accessability of the sensor lower. That's why: to make water quality measurements accessable to anyone, even if they only want to build a couple, if you need to build these in bulk, I'd strongly recommend looking at the OpenOBS-328 instead.
+
+## Getting started
+
+ - View the materials list [here](/materials-list.html)
+ - View the build instructions [here](/build.html)
+ - View the code documentation [here](/documentation.html)
 
 ## Features
 
@@ -13,23 +25,13 @@ The OpenTholoMetri is a data logging system designed for turbidity measurement u
 
 ## Tools
 
-This project includes several tools to help you work with the OpenTholoMetri:
+This project includes tools to help you work with the OpenTholoMetri:
 
-- **[CSV Viewer](csv-viewer/)**: A browser-based tool to visualize your sensor data
-  - Load CSV files directly from the SD card
-  - View interactive plots of your measurements
-  - No server required - everything runs locally
-
-## Getting Started
-
-1. Power on your OpenTholoMetri device
-2. The device will automatically start taking measurements
-3. Retrieve the SD card to access your data
-4. Use the CSV Viewer to analyze your results
+- **[CSV Viewer](csv-viewer/)**: A browser-based basic tool to visualize your sensor data
 
 ## Data Format
 
 The device generates CSV files with the following format:
-- Headers: `Timestamp,Proximity,Ambient Light,Battery Voltage`
+- Headers: `Timestamp,Proximity,Ambient Light,Battery Voltage,Temperature (C),Turbidity Raw,Turbidity Voltage`
 - Timestamp format: `YYYY-MM-DD HH:MM:SS`
 - All measurements are logged at regular intervals
