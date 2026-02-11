@@ -15,7 +15,7 @@ const navItems = [
   { title: 'Materials', href: '/materials-list.html', page: 'materials-list' },
   { title: 'Build', href: '/build.html', page: 'build' },
   { title: 'Code Documentation', href: '/documentation.html', page: 'documentation' },
-  { title: 'CSV Viewer', href: '/csv-viewer/', page: null },
+  { title: 'CSV Viewer', href: '/csv-viewer/', page: null, target: '_blank' },
 ];
 
 function createHeader(currentPage) {
@@ -23,7 +23,8 @@ function createHeader(currentPage) {
     .map(item => {
       const isActive = item.page === currentPage;
       const activeClass = isActive ? 'text-blue-600 font-medium' : 'text-slate-600 hover:text-slate-900';
-      return `<a href="${item.href}" class="${activeClass}">${item.title}</a>`;
+      const targetAttr = item.target ? ` target="${item.target}"` : '';
+      return `<a href="${item.href}" class="${activeClass}"${targetAttr}>${item.title}</a>`;
     })
     .join('\n          ');
 
