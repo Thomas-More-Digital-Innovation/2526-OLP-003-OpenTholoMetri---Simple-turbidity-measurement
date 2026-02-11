@@ -27,7 +27,7 @@ While the OpenOBS-328 is great, I found the documentation quite difficult to rea
 
 This project includes tools to help you work with the OpenTholoMetri:
 
-- **[CSV Viewer](csv-viewer/)**: A browser-based basic tool to visualize your sensor data
+- **<a href="csv-viewer/" target="_blank">CSV Viewer</a>**: A browser-based basic tool to visualize your sensor data
 
 ## Data Format
 
