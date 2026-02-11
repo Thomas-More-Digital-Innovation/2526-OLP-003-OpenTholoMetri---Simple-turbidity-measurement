@@ -117,6 +117,27 @@ function createTemplate(title, bodyHtml, currentPage) {
         background-color: transparent;
         padding: 0;
       }
+      .prose table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1rem;
+      }
+      .prose th,
+      .prose td {
+        border: 1px solid #e2e8f0;
+        padding: 0.5rem 0.75rem;
+        vertical-align: top;
+        color: #334155;
+      }
+      .prose th {
+        background-color: #f8fafc;
+        font-weight: 600;
+        color: #0f172a;
+        text-align: left;
+      }
+      .prose tbody tr:nth-child(even) {
+        background-color: #f8fafc;
+      }
     </style>
   </head>
   <body class="min-h-screen bg-slate-50">
