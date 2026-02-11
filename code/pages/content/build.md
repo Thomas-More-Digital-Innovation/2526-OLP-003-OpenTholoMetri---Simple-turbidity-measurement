@@ -30,12 +30,12 @@ Fit the grove turbidity sensor first, then push in the VCNL4010, finally fit the
 
 This step takes by far the longest, I did it with two sets of exopy. The first one is a quick set epoxy that I used to mount everything, the second is a slow setting epoxy that is easy to use for this case, because it's very viscous, which causes it to not need a vacuüm pump to be clear.
 
-![First epoxy pour](/assets/epoxy/epoxy-1)
+![First epoxy pour](/assets/epoxy/epoxy-1.jpg)
 
 When pouring the final epoxy, make sure the sensor is laying flat. It might need to be poured in two layers due to the epoxy leaking out.
 
-![Second epoxy pour part 1](/assets/epoxy/epoxy-2)
-![Second epoxy pour part 2](/assets/epoxy/epoxy-3)
+![Second epoxy pour part 1](/assets/epoxy/epoxy-2.jpg)
+![Second epoxy pour part 2](/assets/epoxy/epoxy-3.jpg)
 
 
 ## 5: Fitting the head to the tube
