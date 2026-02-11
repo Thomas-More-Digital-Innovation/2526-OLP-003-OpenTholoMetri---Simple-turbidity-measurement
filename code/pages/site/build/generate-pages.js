@@ -148,6 +148,11 @@ function createTemplate(title, bodyHtml, currentPage) {
         ${bodyHtml}
       </article>
     </main>
+    <footer class="border-t border-slate-200 bg-white">
+      <div class="mx-auto max-w-5xl px-4 py-4 text-center text-slate-600">
+        <img src="assets/Thomas More-studentenlogo_ENG_oranje_WEB.png" alt="Thomas More Logo" class="mx-auto mb-2 h-8">
+      </div>
+    </footer>
   </body>
 </html>`;
 }
