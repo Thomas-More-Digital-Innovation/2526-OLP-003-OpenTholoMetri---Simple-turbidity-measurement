@@ -8,7 +8,7 @@
   
 ### Tools Required
 
-- Soldering iron and (LEAD FREE!) solder
+- Soldering iron and (lead-free!!!) solder
 - Wire strippers
 - 3D printer (or access to 3D printing)
 
