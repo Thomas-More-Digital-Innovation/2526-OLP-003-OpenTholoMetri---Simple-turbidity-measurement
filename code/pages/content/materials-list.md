@@ -8,7 +8,7 @@
   
 ### Tools Required
 
-- Soldering iron and solder
+- Soldering iron and (LEAD FREE!) solder
 - Wire strippers
 - 3D printer (or access to 3D printing)
 
@@ -25,7 +25,8 @@
 | [VCNL4010 Proximity/Light sensor](https://www.adafruit.com/product/466) | 1 | $7.50 |
 | [Grove - Turbidity Sensor (Meter) for Arduino V1.0](https://www.seeedstudio.com/Grove-Turbidity-Sensor-p-4399.html) | 1 | $24.10 |
 | [Waterproof 1-Wire DS18B20 Digital temperature sensor](https://www.adafruit.com/product/381) | 1 | $9.95 |
-
+| [Rubberen winterstop voor zwembad, spa, 51 mm, 2 stuks ](https://www.amazon.com.be/-/nl/Shiwaki-Rubberen-winterstop-zwembad-stuks/dp/B0B4JGQWQJ/ref=sr_1_4?s=garden) | 1 | €8,99 |
+| [PVC pipe 50mm](https://www.gamma.nl/assortiment/martens-rio-buis-grijs-50-mm-1-meter/p/B258777) | 1 | €5.49 |
 
 
 ## Where to Buy
