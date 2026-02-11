@@ -147,7 +147,7 @@ function createTemplate(title, bodyHtml, currentPage) {
   </head>
   <body class="min-h-screen bg-slate-50">
     ${createHeader(currentPage)}
-    <main class="mx-auto max-w-5xl px-4 pb-8">
+    <main class="mx-auto max-w-5xl px-4 pb-8 flex flex-col">
       <article class="prose max-w-none">
         ${bodyHtml}
       </article>
