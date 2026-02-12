@@ -8,7 +8,7 @@ const int RTC_INTERRUPT_PIN = 5; // RTC interrupt pin (SQW/INT on Adalogger)
 const int BATTERY_PIN = 9;       // Battery voltage pin
 const int DS18B20_POWER_PIN = 12;   // DS18B20 VCC power control
 const int DS18B20_DATA_PIN = A0;    // DS18B20 1-Wire data pin
-const int GROVE_POWER_PIN = 11;     // Grove turbidity sensor VCC power control
+const int GROVE_POWER_PIN = 13;     // Grove turbidity sensor VCC power control
 const int GROVE_ANALOG_PIN = A1;    // Grove turbidity sensor analog pin
 
 // Timing configuration
