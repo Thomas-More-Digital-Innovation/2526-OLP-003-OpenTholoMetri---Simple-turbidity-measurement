@@ -3,7 +3,7 @@
 ## Overview
 
 The OpenTholoMetri firmware runs on an Adafruit Feather M0 microcontroller and performs:
-- Periodic sensor readings at configurable intervals (default: 5 minutes)
+- Periodic sensor readings at configurable intervals (default: 1 minute)
 - Timestamped data logging to SD card in CSV format
 - Deep sleep between measurements for power efficiency (~6µA in standby)
 - Interrupt-driven wake-up via RTC timer
@@ -32,11 +32,10 @@ The OpenTholoMetri firmware runs on an Adafruit Feather M0 microcontroller and p
 | SPI | SCK/MOSI/MISO | SD card data interface (hardware SPI pins) |
 | I2C | SDA/SCL | VCNL4010 (0x13) and PCF8523 (0x68) |
 | 5 | RTC_INTERRUPT_PIN | RTC countdown timer interrupt (SQW/INT from RTC) |
-| 13 | LED_PIN | Status indicator LED |
 | 9 | BATTERY_PIN | Battery voltage ADC input (via /2 divider) |
 | 12 | DS18B20_POWER_PIN | DS18B20 VCC power control |
 | A0 | DS18B20_DATA_PIN | DS18B20 1‑Wire data |
-| 11 | GROVE_POWER_PIN | Grove turbidity sensor VCC power control |
+| 13 | GROVE_POWER_PIN | Grove turbidity sensor VCC power control |
 | A1 | GROVE_ANALOG_PIN | Grove turbidity sensor analog ADC input |
 
 ### Power Consumption
@@ -77,7 +76,7 @@ Timestamp,Proximity,Ambient Light,Battery Voltage,Temperature (C),Turbidity Raw,
 ```
 
 - **Timestamp**: YYYY-MM-DD HH:MM:SS format
-- **Proximity/Ambient Light**: 0-1023 ADC values
+- **Proximity/Ambient Light**: 0-65535
 - **Battery Voltage**: Volts
 - **Temperature**: Celsius
 - **Turbidity Raw**: Raw ADC value
@@ -105,6 +104,8 @@ Install via Arduino Library Manager:
 3. **SD** (built-in)
 4. **SPI** (built-in)
 5. **Wire** (built-in)
+6. **OneWire**
+7. **DallasTemperature**
 
 #### Upload Process
 1. Open `main.ino` in Arduino IDE
