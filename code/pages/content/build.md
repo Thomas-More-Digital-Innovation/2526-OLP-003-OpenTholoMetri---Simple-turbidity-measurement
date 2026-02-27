@@ -45,7 +45,7 @@ If you want to change these, you will have to recompile the firmware; see the [f
 
 ## 6: Fitting the head to the tube
 
-Put the boards and wires in the tube, fit the 3d print in the tube, next pour in the expoxy untill the head is sealeds.
+Put the boards and wires in the tube, fit the 3d print in the tube, next pour in the expoxy untill the head is sealed.
 
 ## 7: Closing the tube
 
