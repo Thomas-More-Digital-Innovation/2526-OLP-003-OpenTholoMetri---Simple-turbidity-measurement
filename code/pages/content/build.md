@@ -28,7 +28,7 @@ Fit the Grove turbidity sensor first, then push in the VCNL4010 and finally fit 
 
 ## 4: Pouring the epoxy in the housing
 
-This step takes by far the longest. I did it with two sets of epoxy. The first one is a quick-set epoxy that I used to mount everything; the second is a slow-setting epoxy that is easy to use for this case because it's very viscous, which means it doesn't need a vacuum pump to be clear.
+This step takes by far the longest. I did it with two sets of epoxy. The first one is a quick-set epoxy that I used to mount everything; the second is a slow-setting epoxy that is easy to use for this case because it's not very viscous, which means it doesn't need a vacuum pump to be clear.
 
 ![First epoxy pour](/assets/epoxy/epoxy-1.jpg)
 
