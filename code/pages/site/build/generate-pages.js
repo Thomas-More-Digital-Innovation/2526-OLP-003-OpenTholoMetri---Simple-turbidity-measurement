@@ -14,6 +14,7 @@ const navItems = [
   { title: 'About', href: '/', page: 'about' },
   { title: 'Materials', href: '/materials-list.html', page: 'materials-list' },
   { title: 'Build', href: '/build.html', page: 'build' },
+  { title: 'Firmware', href: '/firmware.html', page: 'firmware' },
   { title: 'Code Documentation', href: '/documentation.html', page: 'documentation' },
   { title: 'CSV Viewer', href: '/csv-viewer/', page: null, target: '_blank' },
 ];

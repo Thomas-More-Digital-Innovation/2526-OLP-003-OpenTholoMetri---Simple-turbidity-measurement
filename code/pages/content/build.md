@@ -47,6 +47,16 @@ If you want to change these, you will have to recompile the firmware; see the [f
 
 Put the boards and wires in the tube, fit the 3d print in the tube, next pour in the expoxy untill the head is sealed.
 
+![Head sealing epoxy pour](/assets/epoxy/epoxy-4.jg)
+
+Make sure to let this epoxy harden fully, because this provides a final seal between the head and tube, protecting the board inside.
+
 ## 7: Closing the tube
 
-Finally, fit the winter pool plug and tighten it to waterproof the sensor.
+Finally, fit the cap with pvc glue and close it with teflon to be waterproof.
+
+## 8: Deploy
+
+Charge the boards battery with the USB port and install the sensor at the wanted location.
+
+![Deployed sensor](/assets/deployed.jpg)

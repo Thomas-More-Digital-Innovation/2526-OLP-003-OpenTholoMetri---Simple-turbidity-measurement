@@ -10,6 +10,8 @@ The OpenTholoMetri is a data logging system designed for turbidity measurement u
 
 While the OpenOBS-328 is great, I found the documentation quite difficult to read. The fact of having to order PCBs (with minimum order quantities) made it hard to justify as a one-off sensor, which makes the accessibility of the sensor lower. That's why: to make water quality measurements accessible to anyone, even if they only want to build a couple. If you need to build these in bulk, I'd strongly recommend looking at the OpenOBS-328 instead.
 
+![OpenTholoMetri with Olpas' other sensors](/assets/OpenTholoMetriWithOlpas.jpg)
+
 ## Getting started
 
  - View the materials list [here](/materials-list.html)
